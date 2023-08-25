@@ -23,6 +23,7 @@ const initialState = {
   answer: null,
   points: 0,
   secondsRemaining: null,
+  userResponse: null,
 };
 function reducer(state, action) {
   switch (action.type) {
@@ -42,19 +43,28 @@ function reducer(state, action) {
         ...state,
         status: 'active',
         secondsRemaining: state.questions.length * SECS_PRT_QUSTIONS,
+        userResponse: [],
       };
     case 'newAnswer':
       const question = state.questions.at(state.index);
       return {
         ...state,
         answer: action.payload,
+        userResponse: [...state.userResponse, action.payload],
         points:
           action.payload === question.correctOption
             ? state.points + question.points
             : state.points,
       };
     case 'nextQuestion':
+      console.log(state.userResponse);
       return { ...state, index: state.index + 1, answer: null };
+    case 'previousQuestion':
+      return {
+        ...state,
+        index: state.index - 1,
+        // answer: state.userResponse[state.index],
+      };
     case 'finished':
       return { ...state, status: 'finished' };
     case 'restart':
@@ -76,7 +86,15 @@ function reducer(state, action) {
 
 function App() {
   const [
-    { questions, answer, status, index, points, secondsRemaining },
+    {
+      questions,
+      answer,
+      status,
+      index,
+      points,
+      secondsRemaining,
+      userResponse,
+    },
     dispatch,
   ] = useReducer(reducer, initialState);
   const numQuestions = questions.length;
@@ -113,8 +131,8 @@ function App() {
               answer={answer}
             />
             <Footer>
-              <PrevButton />
-              <Timer dispatch={dispatch} secondsRemaining={secondsRemaining} />
+              <PrevButton index={index} dispatch={dispatch} />
+
               <NextButton
                 dispatch={dispatch}
                 answer={answer}
@@ -122,6 +140,7 @@ function App() {
                 numQuestions={numQuestions}
               />
             </Footer>
+            <Timer dispatch={dispatch} secondsRemaining={secondsRemaining} />
           </>
         )}
         {status === 'finished' && (

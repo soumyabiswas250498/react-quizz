@@ -167,9 +167,8 @@ progress {
 }
 
 footer {
-  display: inline-grid;
-  grid-template-columns: auto auto auto;
-  grid-column-gap: 27%;
+  display: flex;
+  justify-content: space-between;
 }
 /* footer * {
   margin-right: 90px;
@@ -216,11 +215,15 @@ footer {
 }
 
 .timer {
+  width: 25%;
+  display: flex;
+  justify-content: center;
   font-size: 1.8rem;
   color: var(--color-medium);
   border: 2px solid var(--color-dark);
   padding: 1.35rem 2.8rem;
   border-radius: 100px;
+  margin-inline: auto;
 }
 
 /* CREDIT: https://dev.to/afif/i-made-100-css-loaders-for-your-next-project-4eje */
@@ -304,8 +307,5 @@ footer {
   }
   .timer {
     font-size: 1.4rem;
-  }
-  footer {
-    grid-column-gap: 10%;
   }
 }
