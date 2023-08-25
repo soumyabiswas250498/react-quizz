@@ -167,16 +167,9 @@ progress {
 }
 
 footer {
-  display: inline-grid;
-  grid-template-columns: auto auto auto;
-  grid-column-gap: 27%;
+  display: flex;
+  justify-content: space-between;
 }
-/* footer * {
-  margin-right: 90px;
-} */
-/* .btn-prev {
-  float: left;
-} */
 
 .answer {
   transform: translateX(2rem);
@@ -304,8 +297,5 @@ footer {
   }
   .timer {
     font-size: 1.4rem;
-  }
-  footer {
-    grid-column-gap: 10%;
   }
 }
