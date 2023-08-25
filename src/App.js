@@ -10,7 +10,6 @@ import Progress from './components/Progress';
 import FinishScreen from './components/FinishScreen';
 import Footer from './components/Footer';
 import Timer from './components/Timer';
-import PrevButton from './components/PrevButton';
 
 const SECS_PRT_QUSTIONS = 30;
 
@@ -113,7 +112,6 @@ function App() {
               answer={answer}
             />
             <Footer>
-              <PrevButton />
               <Timer dispatch={dispatch} secondsRemaining={secondsRemaining} />
               <NextButton
                 dispatch={dispatch}
