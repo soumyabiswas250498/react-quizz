@@ -8,7 +8,7 @@
   --color-accent: #ffa94d;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Codystar&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Codystar&display=swap');
 
 * {
   margin: 0;
@@ -18,10 +18,9 @@
 
 html {
   font-size: 62.5%;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
-
 body {
   min-height: 100vh;
   color: var(--color-light);
@@ -42,7 +41,7 @@ body {
 
 .app-header {
   width: 66rem;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -62,7 +61,7 @@ img {
 }
 
 h1 {
-  font-family: "Codystar";
+  font-family: 'Codystar';
   font-size: 5.6rem;
 }
 
@@ -167,6 +166,18 @@ progress {
   color: var(--color-darkest);
 }
 
+footer {
+  display: inline-grid;
+  grid-template-columns: auto auto auto;
+  grid-column-gap: 27%;
+}
+/* footer * {
+  margin-right: 90px;
+} */
+/* .btn-prev {
+  float: left;
+} */
+
 .answer {
   transform: translateX(2rem);
 }
@@ -205,7 +216,6 @@ progress {
 }
 
 .timer {
-  float: left;
   font-size: 1.8rem;
   color: var(--color-medium);
   border: 2px solid var(--color-dark);
@@ -256,4 +266,46 @@ progress {
 .counter * {
   font-size: inherit;
   padding: 0.8rem;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    width: 100vw;
+  }
+  .main {
+    width: 100%;
+  }
+  .app-header {
+    width: 100%;
+  }
+  img {
+    width: 15%;
+  }
+  h1 {
+    font-size: 3rem;
+  }
+  h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+  }
+  h3 {
+    font-size: 1.8rem;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+  }
+  h4 {
+    font-size: 1.5rem;
+    font-weight: 250;
+    margin-bottom: 1.5rem;
+  }
+  .btn {
+    font-size: 1.4rem;
+    padding: 1.2rem 2.4rem;
+  }
+  .timer {
+    font-size: 1.4rem;
+  }
+  footer {
+    grid-column-gap: 10%;
+  }
 }
