@@ -21,9 +21,8 @@ const initialState = {
   status: 'loading',
   index: 0,
   answer: null,
-  points: 0,
   secondsRemaining: null,
-  userResponse: null,
+  userResponses: null,
 };
 function reducer(state, action) {
   switch (action.type) {
@@ -43,27 +42,25 @@ function reducer(state, action) {
         ...state,
         status: 'active',
         secondsRemaining: state.questions.length * SECS_PRT_QUSTIONS,
-        userResponse: [],
+        userResponses: new Array(state.questions.length),
       };
     case 'newAnswer':
-      const question = state.questions.at(state.index);
       return {
         ...state,
         answer: action.payload,
-        userResponse: [...state.userResponse, action.payload],
-        points:
-          action.payload === question.correctOption
-            ? state.points + question.points
-            : state.points,
+        userResponses: [
+          ...state.userResponses.slice(0, state.index),
+          action.payload,
+          ...state.userResponses.slice(state.index + 1),
+        ],
       };
     case 'nextQuestion':
-      console.log(state.userResponse);
+      // console.log(state.userResponses);
       return { ...state, index: state.index + 1, answer: null };
     case 'previousQuestion':
       return {
         ...state,
         index: state.index - 1,
-        // answer: state.userResponse[state.index],
       };
     case 'finished':
       return { ...state, status: 'finished' };
@@ -86,19 +83,10 @@ function reducer(state, action) {
 
 function App() {
   const [
-    {
-      questions,
-      answer,
-      status,
-      index,
-      points,
-      secondsRemaining,
-      userResponse,
-    },
+    { questions, answer, status, index, secondsRemaining, userResponses },
     dispatch,
   ] = useReducer(reducer, initialState);
   const numQuestions = questions.length;
-  const maxPoints = questions.reduce((prev, cur) => prev + cur.points, 0);
   useEffect(function () {
     fetch('http://localhost:8000/questions')
       .then(response => response.json())
@@ -120,15 +108,13 @@ function App() {
         {status === 'active' && (
           <>
             <Progress
-              index={index}
+              userResponses={userResponses}
               numQuestions={numQuestions}
-              maxPoints={maxPoints}
-              points={points}
             />
             <Question
               question={questions[index]}
               dispatch={dispatch}
-              answer={answer}
+              userResponses={userResponses[index]}
             />
             <Footer>
               <PrevButton index={index} dispatch={dispatch} />
@@ -145,9 +131,9 @@ function App() {
         )}
         {status === 'finished' && (
           <FinishScreen
-            points={points}
-            maxPoints={maxPoints}
             dispatch={dispatch}
+            userResponses={userResponses}
+            questions={questions}
           />
         )}
       </Main>

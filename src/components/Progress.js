@@ -1,12 +1,14 @@
-function Progress({ index, numQuestions, maxPoints, points }) {
+function Progress({ userResponses, numQuestions }) {
+  let questionsAttempted = 0;
+  userResponses.map(response =>
+    response !== undefined ? questionsAttempted++ : null
+  );
+
   return (
     <header className="progress">
-      <progress max={numQuestions} value={index} />
+      <progress max={numQuestions} value={questionsAttempted} />
       <p>
-        Question <strong>{index + 1}</strong> /{numQuestions}
-      </p>
-      <p>
-        Points <strong>{points}</strong> /{maxPoints}
+        Question <strong>{questionsAttempted}</strong> /{numQuestions}
       </p>
     </header>
   );

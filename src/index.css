@@ -4,8 +4,8 @@
   --color-medium: #ced4da;
   --color-light: #f1f3f5;
 
-  --color-theme: #1098ad;
-  --color-accent: #ffa94d;
+  --color-theme: #1a7a3a;
+  --color-accent: #af7230;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Codystar&display=swap');
@@ -41,7 +41,7 @@ body {
 
 .app-header {
   width: 66rem;
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -67,20 +67,30 @@ h1 {
 
 h2 {
   font-size: 3.6rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 h3 {
   font-size: 2.4rem;
   font-weight: 600;
-  margin-bottom: 4rem;
+  margin-bottom: 1rem;
 }
 
 h4 {
-  font-size: 2.2rem;
+  font-size: 2rem;
   font-weight: 600;
-  margin-bottom: 2.4rem;
+  margin-bottom: 1rem;
 }
+h5 {
+  font-size: 1.8rem;
+  font-weight: 200;
+  margin-bottom: 0.5rem;
+}
+
+/* .result-Out {
+  font-size: 1.8rem;
+  font-weight: 200;
+} */
 
 .start {
   display: flex;
@@ -89,7 +99,7 @@ h4 {
 }
 
 .progress {
-  margin-bottom: 4rem;
+  margin-bottom: 1.5rem;
   display: grid;
   justify-content: space-between;
   gap: 1.2rem;
@@ -161,9 +171,7 @@ progress {
   color: var(--color-light);
 }
 .btn-option.wrong {
-  background-color: var(--color-accent);
-  border: 2px solid var(--color-accent);
-  color: var(--color-darkest);
+  color: var(--color-light);
 }
 
 footer {
@@ -178,18 +186,34 @@ footer {
 } */
 
 .answer {
-  transform: translateX(2rem);
+  transform: translateX(1.5rem);
+  background-color: var(--color-accent);
+}
+
+.wrong {
+  color: rgb(165, 2, 2);
+  font-weight: 500;
+}
+.correct {
+  color: rgb(0, 165, 0);
+  font-weight: 500;
+}
+.not-answered {
+  color: var(--color-accent);
+  font-weight: 500;
 }
 
 .result {
+  width: 100%;
   background-color: var(--color-theme);
   color: var(--color-light);
-  border-radius: 100px;
+  border-radius: 15px;
   text-align: center;
   padding: 2rem 0;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 500;
   margin-bottom: 1.6rem;
+  padding: 15px 15px;
 }
 
 .result span {
@@ -271,6 +295,19 @@ footer {
   padding: 0.8rem;
 }
 
+.question {
+  border: solid rgb(146, 146, 146) 1px;
+  border-radius: 8px;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.question-Section h2 {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
 @media only screen and (max-width: 600px) {
   body {
     width: 100vw;
@@ -293,13 +330,18 @@ footer {
   }
   h3 {
     font-size: 1.8rem;
-    font-weight: 300;
+    font-weight: 400;
     margin-bottom: 1.5rem;
   }
   h4 {
-    font-size: 1.5rem;
-    font-weight: 250;
+    font-size: 1.8rem;
+    font-weight: 300;
     margin-bottom: 1.5rem;
+  }
+  h5 {
+    font-size: 1.6rem;
+    font-weight: 250;
+    margin-bottom: 0.5rem;
   }
   .btn {
     font-size: 1.4rem;
