@@ -81,7 +81,7 @@ function App() {
   const numQuestions = questions.length;
   const maxPoints = questions.reduce((prev, cur) => prev + cur.points, 0);
   useEffect(function () {
-    fetch('http://localhost:8000/questions')
+    fetch('https://my-json-server.typicode.com/soumyabiswas250498/demo-question-api/questions')
       .then(response => response.json())
       .then(data => {
         // console.log(data);
